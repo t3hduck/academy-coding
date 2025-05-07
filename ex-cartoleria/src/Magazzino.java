@@ -2,8 +2,9 @@ public class Magazzino {
     private Articolo[] articoli;
     private int count;
 
-    public Magazzino(int count) {
-        this.count = count;
+    public Magazzino(int num_art) {
+        articoli = new Articolo[num_art];
+        count = 0;
     }
 
     // Caricamento pezzi in magazzino
@@ -19,13 +20,13 @@ public class Magazzino {
     public void stampaArticoli() {
         System.out.println("Articoli in magazzino:");
         for (int i = 0; i < count; i++) {
-            System.out.println(articoli[i]);
+            System.out.println("Marca: " + articoli[i].marca + ", Modello: " + articoli[i].modello + " Costo:" + articoli[i].costo /*+ "Colore: " + articoli[i].colore*/);
         }
     }
 
     // Calcola costo totale
-    public float calcolaCostoTotale() {
-        float somma = 0;
+    public double calcolaCostoTotale() {
+        double somma = 0;
         for (int i = 0; i < count; i++) {
             somma += articoli[i].getCosto();
         }
@@ -36,7 +37,7 @@ public class Magazzino {
     public double calcolaRicavoTotale() {
         double somma = 0;
         for (int i = 0; i < count; i++) {
-            somma += articoli[i].getPrezzo();
+            somma += articoli[i].calcolaPrezzo();
         }
         return somma;
     }

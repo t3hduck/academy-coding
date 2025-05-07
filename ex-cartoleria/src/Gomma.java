@@ -9,9 +9,10 @@ public class Gomma extends Articolo{
     }
 
     //override
-    public double getPrezzo(){
-        costo = costo * 2;
-        return costo;
+    public double calcolaPrezzo(){
+        double costogomma;
+        costogomma = super.getCosto() * 2;
+        return costogomma;
     }
     // Getter e setter
     public String getDimensione() {

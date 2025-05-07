@@ -7,11 +7,11 @@ public class Penna extends Articolo{
         this.colore = colore;
     }
 
-    //override getPrezzo
-    @Override
-    public double getPrezzo() {
-        costo = costo * 3;
-        return costo;
+    //override calcolaPrezzo
+    public double calcolaPrezzo() {
+        double costopenna;
+        costopenna = super.getCosto() * 3;
+        return costopenna;
     }
 
     //getter e setter
