@@ -8,27 +8,9 @@ public class Gomma extends Articolo{
         this.forma = forma;
     }
 
-    //override
+    @Override
     public double calcolaPrezzo(){
-        double costogomma;
-        costogomma = super.getCosto() * 2;
-        return costogomma;
-    }
-    // Getter e setter
-    public String getDimensione() {
-        return dimensione;
-    }
-
-    public void setDimensione(String dimensione) {
-        this.dimensione = dimensione;
-    }
-
-    public String getForma() {
-        return forma;
-    }
-
-    public void setForma(String forma) {
-        this.forma = forma;
+        return super.getCosto() * 2;
     }
 
 }

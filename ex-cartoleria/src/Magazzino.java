@@ -1,13 +1,19 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class Magazzino {
     private Articolo[] articoli;
-    private int count;
+    private int count = 0;
+    private boolean check = true;
 
-    public Magazzino(int num_art) {
+    public Magazzino(int num_art) {;
         articoli = new Articolo[num_art];
-        count = 0;
     }
 
-    // Caricamento pezzi in magazzino
+    public boolean isCheck() {
+        return check;
+    }
+
     public void aggiungiArticolo(Articolo articolo) {
         if (count < articoli.length) {
             articoli[count++] = articolo;
@@ -16,15 +22,17 @@ public class Magazzino {
         }
     }
 
-    // Stampa articoli presenti
     public void stampaArticoli() {
-        System.out.println("Articoli in magazzino:");
-        for (int i = 0; i < count; i++) {
-            System.out.println("Marca: " + articoli[i].marca + ", Modello: " + articoli[i].modello + " Costo:" + articoli[i].costo /*+ "Colore: " + articoli[i].colore*/);
+        System.out.println("Articoli in magazzino: ");
+        if (articoli.length > 0) {
+            for (int i = 0; i < articoli.length; i++) {
+                System.out.println("Marca: " + articoli[i].getMarca() + " | Modello: " + articoli[i].getModello() + " | Costo:" + articoli[i].getCosto());
+            }
+        } else {
+            System.out.println("MAGAZZINO VUOTO");
         }
     }
 
-    // Calcola costo totale
     public double calcolaCostoTotale() {
         double somma = 0;
         for (int i = 0; i < count; i++) {
@@ -33,13 +41,24 @@ public class Magazzino {
         return somma;
     }
 
-    // Calcola ricavo totale
     public double calcolaRicavoTotale() {
         double somma = 0;
         for (int i = 0; i < count; i++) {
             somma += articoli[i].calcolaPrezzo();
         }
         return somma;
+    }
+
+    public Articolo[] rimuoviArticolo() throws NegativeArraySizeException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Numero di articoli da rimuovere: ");
+        int removeIndex = Integer.valueOf(scan.nextLine());
+            if (removeIndex < articoli.length) {
+                check = false;
+                throw new NegativeArraySizeException("Non puoi rimuovere più articoli di quelli esistenti");
+            }
+        articoli = Arrays.copyOf(articoli, articoli.length - removeIndex);
+        return articoli;
     }
 
 }
