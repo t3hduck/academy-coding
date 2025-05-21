@@ -4,14 +4,14 @@ import java.util.Arrays;
 public class Magazzino {
     private Articolo[] articoli;
     private int count = 0;
-    private boolean check = true;
+    private boolean checkError = true;
 
     public Magazzino(int num_art) {;
         articoli = new Articolo[num_art];
     }
 
-    public boolean isCheck() {
-        return check;
+    public boolean isCheckError() {
+        return checkError;
     }
 
     public void aggiungiArticolo(Articolo articolo) {
@@ -54,7 +54,7 @@ public class Magazzino {
         System.out.println("Numero di articoli da rimuovere: ");
         int removeIndex = Integer.valueOf(scan.nextLine());
             if (removeIndex < articoli.length) {
-                check = false;
+                checkError = false;
                 throw new NegativeArraySizeException("Non puoi rimuovere più articoli di quelli esistenti");
             }
         articoli = Arrays.copyOf(articoli, articoli.length - removeIndex);

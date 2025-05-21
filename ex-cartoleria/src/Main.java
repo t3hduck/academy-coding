@@ -20,7 +20,7 @@ public class Main {
                     } catch (NegativeArraySizeException e) {
                         System.out.println("Errore");
                     }
-                } while (magazzino.isCheck());
+                } while (magazzino.isCheckError());
 
                         System.out.println("NUOVO MAGAZZINO");
                         magazzino.stampaArticoli();
